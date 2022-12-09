@@ -40,29 +40,36 @@ app.post("/",(req,res)=>{
     });
 });
 
-app.post("/student/crud", (req,res)=>{
+app.post("/:job_data_provider", (req,res)=>{
     const operation = req.body.operation;
-    let data;
-    if(operation === "select"){
-        mysql_connection.query("SELECT * FROM employee",(err,result)=>{
-            if(err) throw err;
-            res.render("student_select",{
-                data : result
+    const person = _.lowerCase(req.params.job_data_provider);
+
+    console.log(operation + "  " + person);
+
+    if(person === "seeker"){
+        if(operation === "select"){
+            mysql_connection.query("SELECT * FROM employee",(err,result)=>{
+                if(err) throw err;
+                res.render("student_select",{
+                    data : result
+                });
             });
-        });
+        }
+        else if(operation === "insert"){
+            res.render("student_insert",{});
+        }
+        else if(operation === "delete"){
+            res.render("student_delete",{});
+        }
+        else if(operation === "update"){
+            res.render("student_update",{});
+        }
+        else{
+            res.send("Galat Maal he tumhara");
+        }
     }
-    else if(operation === "insert"){
-        res.render("student_insert",{});
-    }
-    else if(operation === "delete"){
-        res.render("student_delete",{});
-    }
-    else if(operation === "update"){
-        res.render("student_update",{});
-    }
-    else{
-        res.send("Galat Maal he tumhara");
-    }
+
+
 });
 
 app.post("/student/operations/:operation_from_form",(req,res)=>{

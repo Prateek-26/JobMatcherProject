@@ -12,8 +12,16 @@
         <div class="data">
 
         </div>
-        <div class="operations">
-            <form action="/student/crud" method="post">
+        <div class="operations job_seekers">
+            <form action="/seeker" method="post">
+                <button type="submit" value="select" name="operation">select</button>
+                <button type="submit" value="insert" name="operation">insert</button>
+                <button type="submit" value="delete" name="operation" >delete</button>
+                <button type="submit" value="update" name="operation" >update</button>
+            </form>
+        </div>
+        <div class="operations job_providers">
+            <form action="/provider" method="post">
                 <button type="submit" value="select" name="operation">select</button>
                 <button type="submit" value="insert" name="operation">insert</button>
                 <button type="submit" value="delete" name="operation" >delete</button>
