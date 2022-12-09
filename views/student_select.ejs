@@ -1,0 +1,10 @@
+<%- include('header.ejs') -%>
+
+    <h1>Hellllo</h1>
+    <div >
+        <% data.forEach((element)=>{ %>
+         <h1> <%= element.name %>  </h1>   
+         <%  }) %>
+    </div>
+
+<%- include('footer.ejs'); -%>
