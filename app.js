@@ -17,29 +17,9 @@ const mysql_connection = mysql.createConnection({
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
-// mysql_connection.connect((err)=>{
-//     if(err) throw err;
-//     console.log("Connected");
-
-    // mysql_connection.query("create database bhai_h0_gaya_connection", (err,result)=>{
-    //     if(err) throw err;
-    //     console.log("Database is created");
-    // });
-
-    // mysql_connection.query("SELECT * FROM employee", (err,result,fields)=>{
-    //     if(err) throw err;
-    //     console.log(result);
-    // })
-// });
-// mysql_connection.end();
-
-// mysql_connection.end();
 
 app.get("/", (req,res)=>{
-// res.send("hello from node");
-    res.render('home',{
-
-    });
+    res.render('home',{});
 });
 
 app.get("/details", (req,res)=>{
@@ -48,17 +28,16 @@ app.get("/details", (req,res)=>{
 
 app.get("/student/insert",(req,res)=>{
     res.render()
-})
+});
 
 app.post("/",(req,res)=>{
-    // console.log(req.body);
     let id = req.body.e_id;
     let name = req.body.e_name;
     const sql = "INSERT INTO employee (emp_no,name) VALUES (?,?);";
     mysql_connection.query(sql,[id,name],(err,result)=>{
         if(err) throw err;
         console.log("Inserted");
-    })
+    });
 });
 
 app.post("/student/crud", (req,res)=>{
@@ -67,10 +46,6 @@ app.post("/student/crud", (req,res)=>{
     if(operation === "select"){
         mysql_connection.query("SELECT * FROM employee",(err,result)=>{
             if(err) throw err;
-            // console.log(result[5].name);
-            // result.forEach(element => {
-            //     console.log(element.name)
-            // });
             res.render("student_select",{
                 data : result
             });
@@ -108,7 +83,7 @@ app.post("/student/operations/:operation_from_form",(req,res)=>{
         mysql_connection.query(query,[req.body.id],(err,result)=>{
             if(err) throw err;
             console.log("Record Deleted");
-        })
+        });
     }
     else if(operation === "update"){
         console.log(req.body);
@@ -116,12 +91,11 @@ app.post("/student/operations/:operation_from_form",(req,res)=>{
         mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
             if(err) throw err;
             console.log("Record Updated");           
-        })
+        });
     }
-
 });
 
 
 app.listen(3000,()=>{
     console.log("Listening on port 3000");
-})
+});
