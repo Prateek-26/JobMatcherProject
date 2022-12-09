@@ -23,12 +23,9 @@ app.get("/", (req,res)=>{
 });
 
 app.get("/details", (req,res)=>{
-    res.render("student",{});
+    res.render("data_manip",{});
 });
 
-app.get("/student/insert",(req,res)=>{
-    res.render()
-});
 
 app.post("/",(req,res)=>{
     let id = req.body.e_id;
@@ -50,19 +47,19 @@ app.post("/:job_data_provider", (req,res)=>{
         if(operation === "select"){
             mysql_connection.query("SELECT * FROM employee",(err,result)=>{
                 if(err) throw err;
-                res.render("student_select",{
+                res.render("seeker_select",{
                     data : result
                 });
             });
         }
         else if(operation === "insert"){
-            res.render("student_insert",{});
+            res.render("seeker_insert",{});
         }
         else if(operation === "delete"){
-            res.render("student_delete",{});
+            res.render("seeker_delete",{});
         }
         else if(operation === "update"){
-            res.render("student_update",{});
+            res.render("seeker_update",{});
         }
         else{
             res.send("Galat Maal he tumhara");
@@ -72,7 +69,7 @@ app.post("/:job_data_provider", (req,res)=>{
 
 });
 
-app.post("/student/operations/:operation_from_form",(req,res)=>{
+app.post("/seeker/operations/:operation_from_form",(req,res)=>{
 
     let operation = _.lowerCase(req.params.operation_from_form);
 
@@ -104,5 +101,5 @@ app.post("/student/operations/:operation_from_form",(req,res)=>{
 
 
 app.listen(3000,()=>{
-    console.log("Listening on port 3000");
+    console.log("Listening on port 3000")
 });
