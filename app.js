@@ -45,18 +45,21 @@ app.post("/:job_data_provider", (req,res)=>{
 
     // if(person === "seeker"){
         if(operation === "select"){
-            mysql_connection.query("SELECT * FROM employee",(err,result)=>{
+            let query;
+            if(person === "seeker")
+            query = "SELECT * FROM employee"; // add seeker
+            else
+            query = "SELECT * FROM salary"; // add provider
+            mysql_connection.query(query,(err,result)=>{
                 if(err) throw err;
-                res.render(person+"_select",{
-                    data : result
-                });
+                res.render("_select",{data : result, pp: person});
             });
         }
         else if(operation === "insert"){
             res.render(person+"_insert",{});
         }
         else if(operation === "delete"){
-            res.render(person+"_delete",{});
+            res.render("_delete",{pp:person});
         }
         else if(operation === "update"){
             res.render(person+"_update",{});
@@ -67,34 +70,72 @@ app.post("/:job_data_provider", (req,res)=>{
     // }
 });
 
-app.post("/seeker/operations/:operation_from_form",(req,res)=>{
+app.post("/:person/operations/:operation_from_form",(req,res)=>{
 
     let operation = _.lowerCase(req.params.operation_from_form);
+    const person = _.lowerCase(req.params.person);
 
-    if(operation === "insert"){
-        console.log(req.body);
-        let query = "INSERT INTO employee (emp_no, name) VALUES (?,?);";
-        mysql_connection.query(query,[req.body.e_id, req.body.e_name], (err,result)=>{
-            if(err) throw err;
-            console.log("Inserted Successfully");
-        });
-    } 
-    else if(operation === "delete"){
-        console.log(req.body);
-        let query = "DELETE FROM employee WHERE emp_no = ?;";
-        mysql_connection.query(query,[req.body.id],(err,result)=>{
-            if(err) throw err;
-            console.log("Record Deleted");
-        });
+    // if(operation === "select"){
+    //     mysql_connection.query("SELECT * FROM employee",(err,result)=>{
+    //         if(err) throw err;
+    //         res.render(person+"_select",{
+    //             data : result
+    //         });
+    //     });
+    // }
+    if(person==="seeker"){
+        if(operation === "insert"){
+            console.log(req.body);
+            let query = "INSERT INTO salary (emp_no, name) VALUES (?,?);";
+            mysql_connection.query(query,[req.body.e_id, req.body.e_name], (err,result)=>{
+                if(err) throw err;
+                console.log("Inserted Successfully");
+            });
+        } 
+        else if(operation === "delete"){
+            console.log(req.body);
+            let query = "DELETE FROM employee WHERE emp_no = ?;";
+            mysql_connection.query(query,[req.body.id],(err,result)=>{
+                if(err) throw err;
+                console.log("Record Deleted");
+            });
+        }
+        else if(operation === "update"){
+            console.log(req.body);
+            let query = "UPDATE employee SET name = ? WHERE emp_no = ?;";
+            mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
+                if(err) throw err;
+                console.log("Record Updated");           
+            });
+        }
     }
-    else if(operation === "update"){
-        console.log(req.body);
-        let query = "UPDATE employee SET name = ? WHERE emp_no = ?;";
-        mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
-            if(err) throw err;
-            console.log("Record Updated");           
-        });
+    else if(person==="provider"){
+        if(operation === "insert"){
+            console.log(req.body);
+            let query = "INSERT INTO employee (emp_no, name) VALUES (?,?);";
+            mysql_connection.query(query,[req.body.e_id, req.body.e_name], (err,result)=>{
+                if(err) throw err;
+                console.log("Inserted Successfully");
+            });
+        } 
+        else if(operation === "delete"){
+            console.log(req.body);
+            let query = "DELETE FROM employee WHERE emp_no = ?;";
+            mysql_connection.query(query,[req.body.id],(err,result)=>{
+                if(err) throw err;
+                console.log("Record Deleted");
+            });
+        }
+        else if(operation === "update"){
+            console.log(req.body);
+            let query = "UPDATE employee SET name = ? WHERE emp_no = ?;";
+            mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
+                if(err) throw err;
+                console.log("Record Updated");           
+            });
+        }
     }
+
 });
 
 app.listen(3000,()=>{

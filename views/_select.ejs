@@ -1,0 +1,15 @@
+<%- include('header.ejs') -%>
+
+    <div>
+        <% if(pp ==="provider"){ %>
+        <% data.forEach((element)=>{ %>
+         <h1> <%= element.salary %>  </h1>   
+         <%  }) %>
+         <%}else{%>
+        <% data.forEach((element)=>{ %>
+        <h1> <%= element.name %>  </h1>   
+        <%  }) %>           
+         <%}%>
+    </div>
+
+<%- include('footer.ejs'); -%>

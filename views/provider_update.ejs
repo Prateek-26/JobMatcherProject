@@ -1,0 +1,8 @@
+<%- include('header.ejs') -%>
+<form action="/provider/operations/Update" method="post">
+    <input type="number" name="id" placeholder="Enter New Job ID">
+    <input type="text" name="name" placeholder="Enter New Job Designation">
+    <input type="email" name="email" placeholder="Enter New Skill Required">
+    <button type="submit" value="">update</button>
+</form>
+<%- include('footer.ejs'); -%>

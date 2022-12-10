@@ -1,0 +1,10 @@
+<%- include('header.ejs') -%>
+    <h1>INSERT</h1>
+    <form action="/provider/operations/Insert" method="post">
+        <input type="text" name="e_id">
+        <input type="text" name="e_name">
+        <input type="number" name="id" placeholder="Enter Job ID">
+        <input type="text" name="name" placeholder="Enter Job Designation">
+        <button type="submit">submit</button>
+    </form>
+<%- include('footer.ejs'); -%>
