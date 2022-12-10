@@ -18,24 +18,24 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
-app.get("/", (req,res)=>{
-    res.render('home',{});
-});
+// app.get("/", (req,res)=>{
+//     res.render('home',{});
+// });
 
 app.get("/details", (req,res)=>{
     res.render("data_manip",{});
 });
 
 
-app.post("/",(req,res)=>{
-    let id = req.body.e_id;
-    let name = req.body.e_name;
-    const sql = "INSERT INTO employee (emp_no,name) VALUES (?,?);";
-    mysql_connection.query(sql,[id,name],(err,result)=>{
-        if(err) throw err;
-        console.log("Inserted");
-    });
-});
+// app.post("/",(req,res)=>{
+//     let id = req.body.e_id;
+//     let name = req.body.e_name;
+//     const sql = "INSERT INTO employee (emp_no,name) VALUES (?,?);";
+//     mysql_connection.query(sql,[id,name],(err,result)=>{
+//         if(err) throw err;
+//         console.log("Inserted");
+//     });
+// });
 
 app.post("/:job_data_provider", (req,res)=>{
     const operation = req.body.operation;
@@ -43,30 +43,28 @@ app.post("/:job_data_provider", (req,res)=>{
 
     console.log(operation + "  " + person);
 
-    if(person === "seeker"){
+    // if(person === "seeker"){
         if(operation === "select"){
             mysql_connection.query("SELECT * FROM employee",(err,result)=>{
                 if(err) throw err;
-                res.render("seeker_select",{
+                res.render(person+"_select",{
                     data : result
                 });
             });
         }
         else if(operation === "insert"){
-            res.render("seeker_insert",{});
+            res.render(person+"_insert",{});
         }
         else if(operation === "delete"){
-            res.render("seeker_delete",{});
+            res.render(person+"_delete",{});
         }
         else if(operation === "update"){
-            res.render("seeker_update",{});
+            res.render(person+"_update",{});
         }
         else{
             res.send("Galat Maal he tumhara");
         }
-    }
-
-
+    // }
 });
 
 app.post("/seeker/operations/:operation_from_form",(req,res)=>{
@@ -98,7 +96,6 @@ app.post("/seeker/operations/:operation_from_form",(req,res)=>{
         });
     }
 });
-
 
 app.listen(3000,()=>{
     console.log("Listening on port 3000")
