@@ -1,9 +1,26 @@
 body{
     height: 0;
     padding: 0;
+    /* background: #000; */
 }
 .data{
     height: 75vh;
     width: 100vw;
     /* background: red; */
 }
+.id-contact{
+    border: 2px solid black;
+    /* background: #000; */
+}
+.col-6{
+    height: 100vh;
+    /* background: #000; */
+}
+.left-col{
+    background: blue;
+}
+.right-col{
+    background: red;
+}
+/* Starts from here */
+

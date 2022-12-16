@@ -5,7 +5,7 @@ const res = require('express/lib/response');
 const mysql = require('mysql');
 const SqlString = require('mysql/lib/protocol/SqlString');
 const _ = require('lodash');
-const { result } = require('lodash');
+const { result, get } = require('lodash');
 const app = express();
 const mysql_connection = mysql.createConnection({
     host: 'localhost',
@@ -18,14 +18,15 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
-// app.get("/", (req,res)=>{
-//     res.render('home',{});
-// });
+app.get("/", (req,res)=>{
+    res.sendFile(__dirname + "/views/index.html")
+});
+
+// old way
 
 app.get("/details", (req,res)=>{
     res.render("data_manip",{});
 });
-
 
 // app.post("/",(req,res)=>{
 //     let id = req.body.e_id;
@@ -137,6 +138,22 @@ app.post("/:person/operations/:operation_from_form",(req,res)=>{
     }
 
 });
+
+
+// new way
+
+app.get("/crud_initial",(req,res)=>{
+    res.render("crud_initial",{});
+})
+
+app.get("/:crud_request",(req,res)=>{
+    let request = req.params.crud_request;
+    console.log(request);
+    if(request==="crud_seeker")
+        res.render("crud_seeker",{});
+    else
+    res.render("crud_provider",{});
+})
 
 app.listen(3000,()=>{
     console.log("Listening on port 3000")
