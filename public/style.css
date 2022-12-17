@@ -1,12 +1,11 @@
-body{
-    height: 0;
+*{
+    margin: 0;
     padding: 0;
-    /* background: #000; */
 }
 .data{
     height: 75vh;
     width: 100vw;
-    /* background: red; */
+    background: pink;
 }
 .id-contact{
     border: 2px solid black;
@@ -24,3 +23,48 @@ body{
 }
 /* Starts from here */
 
+.crud-main{
+    min-height: 100vh;
+    overflow: hidden;
+    /* background: #000; */
+    margin: 0;
+}
+.crud-first-row{
+    height: 100vh;
+}
+.crud-second-row{
+    min-height: 50vh;
+}
+/* .seeker-left-col{
+    background: red;
+} */
+/* .seeker-mid-col{
+    background: yellow;
+}
+.seeker-right-col{
+    background: blue;
+}
+.seeker-second-col{
+    background: green;
+} */
+.col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    position: relative;
+}
+.form-inputs{
+    display: block;
+}
+.crud-delete-header{
+    position: absolute;
+    top: 2rem;
+}
+span{
+    width: 20vh;
+    /* color: red; */
+    text-align: left;
+    border: 1px solid black;
+}

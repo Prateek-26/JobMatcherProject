@@ -12,5 +12,45 @@
 <body>
     <h1>provider</h1>
     <!-- bootstrap form -->
+
+    <div class="crud-main">
+        <div class="crud-first-row row">
+            <div class="crud-left-col col col-4">
+                <form action="provider/crud/insert" method="post">
+                    <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
+                    <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
+                    <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
+                    <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
+                    <button type="submit">Insert</button>
+                </form>
+            </div>
+            <div class="crud-mid-col col col-4">
+                <h1 class="crud-delete-header">provider</h1>
+                <form action="provider/crud/delete" method="post">
+                    <input type="number" name="jid" id="" placeholder="Enter Job ID to Delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <div class="crud-right-col col col-4">
+                <form action="provider/crud/update" method="post">
+                    <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
+                    <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
+                    <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
+                    <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+        <div class="crud-second-row row">
+            <div class="crud-second-col col col-12">
+                <% records.forEach((element)=>{ %>
+                    <span><%= element.job_no %></span>
+                    <span><%= element.job_designation %></span>
+                    <span><%= element.skill_req %></span>
+                    <span><%= element.cgpa_req%></span>
+                    <%  }) %>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
