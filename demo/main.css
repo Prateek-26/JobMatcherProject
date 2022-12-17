@@ -1,12 +1,25 @@
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
+    /* color: bisque; */
+}
+.home-body{
+    overflow: hidden;
+}
+/* HOME */
+
+.demo-box{
+    position: absolute;
+    height: 400px;
+    width: 700px;
+    background: #000;
+    right: -4%;
+    bottom: -26%;
+    transform: rotate(-35deg);
 }
 
-/* Home */
-
-section{
-    position: relative;
+.home-section{
+    /* position: relative; */
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -16,14 +29,10 @@ section{
 
 /* Navbar */
 
-nav{
-    border: 1px solid black;
-    /* padding: 0 4rem; */
-}
 
 .navbar-brand{
-    color: aqua;
-    border: 1px solid black;
+    /* color: aqua; */
+    /* border: 1px solid black; */
     margin-left: 1rem;
     letter-spacing: .4rem;
 }
@@ -38,31 +47,51 @@ nav{
 .home-container{
     height: 75vh;
     width: 100vw;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* background: #000; */
     /* position: relative; */
     
 }
 
-.col-sm {
+.home-col-sm {
     height: 75vh;
     width: 100%;
     /* border: 1px solid black; */
-    border-left: 2px solid black;
-    background: #000;
+    /* border-left: 2px solid black; */
+    /* background: #000; */
+}
+
+/* left */
+
+#home-left{
+    /* border: 1px solid black; */
+    /* background: blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    padding-bottom: 0rem;
+    margin-top: 1rem;
+}
+
+.header_container{
+    /* border: 1px solid black; */
+    padding: 2rem;
+    padding-top: 2.5rem;
+    border-radius: 35px; 
 }
 
 .fa-hashtag{
     /* background: #000; */
-    /* padding: 1.5rem; */
-    /* font-size: 4rem; */
-    /* border-radius: 1rem; */
+    /* border: 1px solid black; */
+    font-size: 6rem;
 }
 
 .hashtag-container{
     margin-left: 2rem;
-    height: 5rem;
-    width: 5rem;
+    height: 6rem;
+    width: 6rem;
     border-radius: 20%;
     display: flex;
     align-items: center;
@@ -70,24 +99,10 @@ nav{
 
     font-size: 4rem;
     text-align: center;
-    padding: 1rem;
-    background: orangered;
-}
-
-#left{
-    border: 1px solid black;
-    background: blue;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 1rem;
-}
-
-#right{
-    border: 1px solid black;
-    background: yellow;
-    padding: 2rem 1rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
+    /* background: orangered; */
+    /* border: 1px solid black; */
 }
 
 .home-header{
@@ -97,54 +112,199 @@ nav{
 
 }
 
-.header_container{
-    background: #000;
-    border-left: 2px solid black;
+/* right */
+
+#home-right{
+    /* border: 1px solid black; */
+    /* background: yellow; */
+    padding: 2rem 1rem;
 }
+
 .home-features{
     border: 1px solid black;
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: #000;
+    /* background: #000; */
     /* text-align:center; */
     justify-content: center;
     align-items: center;
 }
+.single-feature{
+    /* border: 1px solid black;/ */
+    margin: .5rem 0;
+    /* display: block; */
+}
 
 .feature-header{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* border: 1px solid black; */
     display: inline-block;
     width: 20rem;
     text-align: left;
+    margin-left: 0.5rem;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
 }
 
-.single-feature{
-    border: 1px solid black;
-    display: block;
-}
 
-.start{
-    border: 1px solid black;
-    /* background: cyan; */
-    color: red;
-    border-radius: 1rem;
-    width: 50%;
-    height: 5vh;
+
+/* Home btn */
+
+.home-btn{
     position: absolute;
-    /* top: 0; */
+    width: 10vw;
     bottom: 10%;
-    margin-left: 25%;
+    margin: 0 45vw;
 }
+
+/* Footer */
 
 .footer{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* background: white; */
     width: 100vw;
-    /* overflow: hidden; */
-
+    text-align: center;
     position: absolute;
     bottom: 0;
+}
+.footer h1{
+    font-size: 0.6rem;
+}
 
+
+
+/* CRUD page */
+
+/* .col-6{
+    height: 100vh;
+}
+
+.left-col{
+    background: blue;
+}
+.right-col{
+    background: red;
+} */
+/* Starts from here */
+
+.crud-main{
+    min-height: 100vh;
+    overflow: hidden;
+    /* background: #000; */
+    margin: 0;
+}
+.crud-first-row{
+    height: 100vh;
+}
+.crud-second-row{
+    min-height: 50vh;
+}
+/* .seeker-left-col{
+    background: red;
+} */
+/* .seeker-mid-col{
+    background: yellow;
+}
+.seeker-right-col{
+    background: blue;
+}
+.seeker-second-col{
+    background: green;
+} */
+.crud-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    position: relative;
+}
+.form-inputs{
+    display: block;
+}
+.crud-delete-header{
+    position: absolute;
+    top: 2rem;
+}
+.crud-col span{
+    width: 20vh;
+    /* color: red; */
+    text-align: left;
+    /* border: 1px solid black; */
+}
+
+/* Crud-Initial */
+
+/* Colors
+white #F6FBF4
+green #5FD068
+*/
+
+.crud-initial-main{
+    position: relative;
+    /* border: 1px solid black; */
+    height: 100vh;
+    /* width: 100vw; */
+    overflow: hidden;
+    padding: 2rem;
+    /* background: #000; */
+}
+.crud-initial-row-container{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+/* left right common */
+.crud-initial-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crud-initial-content-container{
+    height: 90%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.crud-initial-header{
+    position: absolute;
+    top: 5%;
+}
+
+.crud-init-btn{
+    display: block;
+    position: absolute;
+    bottom: 5%; 
+    width: 15vh;
+    left: 160px;
+    visibility: hidden;
+}
+
+/* left */
+.crud-initial-left{
+}
+
+.crud-initial-left-content{
+    
+}
+
+/* right */
+.crud-initial-right{
+}
+.crud-initial-right-content{
+    width: 80%;
+}
+
+.crud-init-footer-header{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    font-size: 0.6rem;
 }

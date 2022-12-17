@@ -47,7 +47,7 @@
 
     <div class="crud-main">
         <div class="crud-first-row row">
-            <div class="crud-left-col col col-4">
+            <div class="crud-left-col col col-4 crud-col">
                 <form action="seeker/crud/insert" method="post">
                     <input class="form-inputs" type="number" name="sid" id="" placeholder="ID" >
                     <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
@@ -58,14 +58,14 @@
                     <button type="submit">Insert</button>
                 </form>
             </div>
-            <div class="crud-mid-col col col-4">
+            <div class="crud-mid-col col col-4 crud-col">
                 <h1 class="crud-delete-header">Seeker</h1>
                 <form action="seeker/crud/delete" method="post">
                     <input type="number" name="sid" id="" placeholder="Enter ID to Delete">
                     <button type="submit">Delete</button>
                 </form>
             </div>
-            <div class="crud-right-col col col-4">
+            <div class="crud-right-col col col-4 crud-col">
                 <form action="seeker/crud/update" method="post">
                     <input class="form-inputs" type="number" name="sid" id="" placeholder="Enter ID to Update">
                     <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="crud-second-row row">
-            <div class="crud-second-col col col-12">
+            <div class="crud-second-col col col-12 crud-col">
                 <% records.forEach((element)=>{ %>
                     <span><%= element.s_id %></span>
                     <span><%= element.s_name %></span>
