@@ -3,11 +3,12 @@
     padding: 0;
     /* color: bisque; */
 }
+
+/* HOME */
+
 .home-body{
     overflow: hidden;
 }
-/* HOME */
-
 .demo-box{
     position: absolute;
     height: 400px;
@@ -29,7 +30,6 @@
 
 /* Navbar */
 
-
 .navbar-brand{
     /* color: aqua; */
     /* border: 1px solid black; */
@@ -42,7 +42,6 @@
 }
 
 /* Main Home Content */
-
 
 .home-container{
     height: 75vh;
@@ -74,7 +73,6 @@
     padding-bottom: 0rem;
     margin-top: 1rem;
 }
-
 .header_container{
     /* border: 1px solid black; */
     padding: 2rem;
@@ -104,12 +102,10 @@
     /* background: orangered; */
     /* border: 1px solid black; */
 }
-
 .home-header{
     /* background: #000; */
     font-size: 6rem;
     padding: 1rem 2rem;
-
 }
 
 /* right */
@@ -170,68 +166,6 @@
 }
 .footer h1{
     font-size: 0.6rem;
-}
-
-
-
-/* CRUD page */
-
-/* .col-6{
-    height: 100vh;
-}
-
-.left-col{
-    background: blue;
-}
-.right-col{
-    background: red;
-} */
-/* Starts from here */
-
-.crud-main{
-    min-height: 100vh;
-    overflow: hidden;
-    /* background: #000; */
-    margin: 0;
-}
-.crud-first-row{
-    height: 100vh;
-}
-.crud-second-row{
-    min-height: 50vh;
-}
-/* .seeker-left-col{
-    background: red;
-} */
-/* .seeker-mid-col{
-    background: yellow;
-}
-.seeker-right-col{
-    background: blue;
-}
-.seeker-second-col{
-    background: green;
-} */
-.crud-col{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid black; */
-    position: relative;
-}
-.form-inputs{
-    display: block;
-}
-.crud-delete-header{
-    position: absolute;
-    top: 2rem;
-}
-.crud-col span{
-    width: 20vh;
-    /* color: red; */
-    text-align: left;
-    /* border: 1px solid black; */
 }
 
 /* Crud-Initial */
@@ -376,3 +310,76 @@ green #5FD068
 }
 
 /* Crud initial completed */
+
+
+/* CRUD page */
+
+/* .col-6{
+    height: 100vh;
+}
+
+.left-col{
+    background: blue;
+}
+.right-col{
+    background: red;
+} */
+/* Starts from here */
+
+.crud-main{
+    min-height: 100vh;
+    overflow: hidden;
+    /* background: #000; */
+    margin: 0;
+}
+.crud-first-row{
+    height: 100vh;
+}
+.crud-second-row{
+    min-height: 50vh;
+}
+/* .seeker-left-col{
+    background: red;
+} */
+/* .seeker-mid-col{
+    background: yellow;
+}
+.seeker-right-col{
+    background: blue;
+}
+.seeker-second-col{
+    background: green;
+} */
+.crud-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    position: relative;
+}
+.form-inputs{
+    display: block;
+}
+.crud-delete-header{
+    position: absolute;
+    top: 2rem;
+}
+.crud-col span{
+    width: 20vh;
+    /* color: red; */
+    text-align: left;
+    /* border: 1px solid black; */
+}
+
+/*  Login Faliure Page */
+
+.login-faliure-main h1{
+    font-size: 5rem;
+    margin: 1rem;
+    /* background: #000; */
+}
+.login-faliure-main button{
+    margin: 4rem 1rem;
+}
+

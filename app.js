@@ -170,28 +170,68 @@ app.post("/:person/operations/:operation_from_form",(req,res)=>{
 // new way
 // Assume 'request' to be a person(either seeker o provide) who is trying to request
 
+let admin_authenticated = false;
 
 let display_query_seeker = "SELECT * FROM seeker_info;";
 let display_query_provider = "SELECT * FROM provider_info;";
 
 app.get("/crud_initial",(req,res)=>{
-    res.render("crud_initial",{});
-})
+    console.log(admin_authenticated);
+    res.sendFile(__dirname + "/crud-initial.html");
+});
+
+app.post("/login-authenticate",(req,res)=>{
+
+    
+    let log = req.body.log;
+    let username = req.body.uname;
+    let password = req.body.pword;
+
+    if(log==="logout")
+    admin_authenticated=false;
+    else{
+        let auth_query = "SELECT id from admin where username=? and password=?";
+        mysql_connection.query(auth_query,[username,password],(err,rows,result)=>{
+            if(err) throw err;
+            else
+            {
+                if(rows[0] === undefined){
+                    admin_authenticated=false;
+                    console.log(admin_authenticated);
+                    // res.redirect("/crud_initial");
+                    res.sendFile(__dirname + "/login-faliure.html");
+                }
+                else{
+                    admin_authenticated=true;
+                    console.log(admin_authenticated);
+                    res.redirect("/crud_initial");
+                }
+            }
+        })
+    }
+
+});
 
 app.get("/:crud_request",(req,res)=>{
     let request = req.params.crud_request;
-    if(request === "crud_seeker"){
-        mysql_connection.query(display_query_seeker,(err,result)=>{
-            if(err) throw err;
-            res.render("crud_seeker",{records:result});
-        });
+    if(admin_authenticated===true){
+        if(request === "crud_seeker"){
+            mysql_connection.query(display_query_seeker,(err,result)=>{
+                if(err) throw err;
+                res.render("crud_seeker",{records:result});
+            });
+        }
+        else{
+                mysql_connection.query(display_query_provider,(err,result)=>{
+                if(err) throw err;
+                res.render("crud_provider",{records: result});
+            })
+        }
     }
     else{
-            mysql_connection.query(display_query_provider,(err,result)=>{
-            if(err) throw err;
-            res.render("crud_provider",{records: result});
-        })
+        res.sendFile(__dirname + "/login-require.html");
     }
+
 });
 
 app.post("/:request/crud/:operation",(req,res)=>{
