@@ -235,13 +235,14 @@
 }
 
 /* Crud-Initial */
+/* LogIN */
 
 /* Colors
 white #F6FBF4
 green #5FD068
 */
 
-.crud-initial-main{
+.login-main{
     position: relative;
     /* border: 1px solid black; */
     height: 100vh;
@@ -250,20 +251,22 @@ green #5FD068
     padding: 2rem;
     /* background: #000; */
 }
-.crud-initial-row-container{
+.login-inner-main-container{
     height: 100%;
     width: 100%;
+    /* background: #000; */
     margin: 0;
 }
 
-/* left right common */
-.crud-initial-col{
+.login-form-main-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
+    /* background: #000; */
 }
 
-.crud-initial-content-container{
+.login-form-inner-main-container{
     height: 90%;
     width: 70%;
     display: flex;
@@ -271,40 +274,105 @@ green #5FD068
     justify-content: center;
     align-items: center;
     position: relative;
+    border: 1px solid black;
+    /* background: red; */
 }
 
+.login-header{
+    position: absolute;
+    top: 1%;
+    color: aqua;
+    left: 3%;
+    font-size: 4.5rem;
+}
+.login-h1-one{
+    color: black;
+    top: 2%;
+}
+.login-h1-two{
+    color: black;
+    top: 16%;
+}
+.login-span{
+    border: 1px solid black;
+    padding: 0 1rem;
+}
+/* form */
+
+.login-form{
+    /* background: blue; */
+    min-height: 35%;
+    /* border: 1px solid black; */
+    padding: 1rem;
+    position: absolute;
+    bottom: 10%;
+}
+.input-group 
+.login-uname{
+    width: 11.5vw;
+}
+#exampleInputPassword1{
+    width: 28.5vh;
+}
+.login-btn{
+    position: absolute;
+    width: 7vw;
+    bottom: 1%;
+    left: 2vh;
+}
+.logout-btn{
+    width: 7vw;
+    position: absolute;
+    bottom: 1%;
+    left: 17vh;
+}
+
+/* right side of form */
+
+.crud-initial-main-container{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* background: #000; */
+}
+.crud-initial-inner-main-container{
+    height: 50%;
+    width: 105%;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+}
+.crud-initial-request-container{
+    width: 90%;
+    height: 90%;
+    border: 1px solid black;
+    /* background: red; */
+    border-radius: 25px;
+    position: relative;
+}
 .crud-initial-header{
     position: absolute;
-    top: 5%;
+    top: 2%;
+    left: 3%;
 }
-
-.crud-init-btn{
-    display: block;
+.crud-initial-btn{
     position: absolute;
-    bottom: 5%; 
-    width: 15vh;
-    left: 160px;
-    visibility: hidden;
+    width: 10vw;
+    bottom: 6%;
+    right: 4%;
 }
-
-/* left */
-.crud-initial-left{
-}
-
-.crud-initial-left-content{
-    
-}
-
-/* right */
-.crud-initial-right{
-}
-.crud-initial-right-content{
-    width: 80%;
-}
+/* Left Right side completed */
 
 .crud-init-footer-header{
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: 48.4%;
     font-size: 0.6rem;
 }
+
+/* Crud initial completed */
