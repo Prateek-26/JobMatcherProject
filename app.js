@@ -97,7 +97,7 @@ app.get("/:crud_request",(req,res)=>{
     let request = req.params.crud_request;
 
     // ChHANGE THIS 
-    // admin_authenticated=true;
+    admin_authenticated=true;
 
     if(admin_authenticated===true){
         if(request === "crud_seeker"){
@@ -123,16 +123,38 @@ app.post("/finallist",(req,res)=>{
     // res.sendFile(__dirname + "/login-require.html");
     // console.log("Hello");
     // res.send("Aa gaya");
-    result_query = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch;";
-    mysql_connection.query(result_query,(err,result)=>{
+    let query_one = "DROP TABLE results;";
+    let query_two = "CREATE TABLE results (SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch);";
+    let query_three = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch";
+
+//    let result_query = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch;";
+    mysql_connection.query(query_one,(err,result)=>{
         if(err) throw err;
         else{
             // console.log(result);
-            res.render("final-page",{
-                records: result
-            })
+            console.log("Part One Done");
+            mysql_connection.query(query_two,(err,result)=>{
+                console.log("Part two starts");
+                mysql_connection.query(query_three,(err,result)=>{
+                    console.log("Part three starts");
+                    console.log(result);
+                    res.render("final-page",{
+                        records: result
+                    });
+                });
+            });
         }
-    })
+    });
+            // mysql_connection.query(query_two,(err,result)=>{
+            //     console.log("Part two starts");
+            //     mysql_connection.query(query_three,(err,result)=>{
+            //         console.log("Part three starts");
+            //         console.log(result);
+            //         res.render("final-page",{
+            //             records: result
+            //         });
+            //     });
+            // });
 })
 
 app.post("/:request/crud/:operation",(req,res)=>{
@@ -149,6 +171,10 @@ app.post("/:request/crud/:operation",(req,res)=>{
            mysql_connection.query(query,[req.body.sid, req.body.sname, req.body.semail, req.body.sphone, req.body.sbranch, req.body.scgpa], (err,result)=>{
                 if(err) throw err;
                 console.log("Inserted Successfully");
+                let second_query = "INSERT INTO skill_info (s_id,s_skill) VALUES (?,?);";
+                mysql_connection.query(second_query,[req.body.sid,req.body.skill],(err,result)=>{
+
+                });
             }); 
             res.redirect("/crud_seeker");
         } 

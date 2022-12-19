@@ -54,33 +54,33 @@
         <div class="crud-first-row row">
             <div class="crud-left-col col col-4 crud-col">
                 <form action="/crud_initial" method="get">
-                    <button type="submit" class="btn btn-primary request-go-back">Go Back</button>
+                    <button type="submit" class="btn btn-outline-dark request-go-back">Go Back</button>
                 </form>
-                <form action="provider/crud/insert" method="post">
+                <form action="provider/crud/insert" method="post" class="insert-form">
                     <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
                     <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
                     <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
                     <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
-                    <button id="inst" class="btn btn-primary" type="submit">Insert</button>
+                    <button id="inst" type="submit" class="btn btn-success seeker-btn">Insert</button>
                 </form>
             </div>
             <div class="crud-mid-col col col-4 crud-col">
-                <h1 class="crud-delete-header">provider</h1>
-                <form action="provider/crud/delete" method="post">
+                <!-- <h1 class="crud-delete-header">provider</h1> -->
+                <form action="provider/crud/delete" method="post" class="delete-form">
                     <input type="number" name="jid" id="" placeholder="Enter Job ID to Delete">
-                    <button id="del" class="btn btn-primary"  type="submit">Delete</button>
+                    <button id="del" type="submit" class="btn btn-danger seeker-btn">Delete</button>
                 </form>
                 <form action="/finallist" method="post">
-                    <button type="submit" id="flt" class="btn btn-warning filter-btn">Filter</button>
+                    <button type="submit" id="flt" class="btn btn-warning filter-btn">Generate Result</button>
                 </form>
             </div>
             <div class="crud-right-col col col-4 crud-col">
-                <form action="provider/crud/update" method="post">
+                <form action="provider/crud/update" method="post" class="update-form">
                     <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
                     <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
                     <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
                     <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
-                    <button id="updt"  class="btn btn-primary" type="submit">Update</button>
+                    <button id="updt" type="submit" class="btn btn-primary seeker-btn">Update</button>
                 </form>
             </div>
         </div>

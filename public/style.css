@@ -568,6 +568,9 @@ input[type=tel]{
 
 .filter-btn{
     width: 10vw;
+    background: white;
+    color: #000;
+    border: 2px solid black;
 }
 
 /* final table */
