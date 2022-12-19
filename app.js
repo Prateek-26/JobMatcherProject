@@ -8,6 +8,9 @@ const _ = require('lodash');
 const { result, get } = require('lodash');
 const e = require('express');
 const { query } = require('express');
+// const alert = require('alert');
+// import alert from 'alert'
+
 const app = express();
 const mysql_connection = mysql.createConnection({
     host: 'localhost',
@@ -20,9 +23,7 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
-app.get("/", (req,res)=>{
-    res.sendFile(__dirname + "/index.html");
-});
+
 
 // old way
 
@@ -33,6 +34,15 @@ app.get("/details", (req,res)=>{
 // new way
 // Assume 'request' to be a person(either seeker o provide) who is trying to request
 
+app.get("/", (req,res)=>{
+    res.sendFile(__dirname + "/index.html");
+    
+});
+
+app.get("/about",(req,res)=>{
+    res.sendFile(__dirname + "/about.html");
+})
+
 let admin_authenticated = false;
 
 let display_query_seeker = "SELECT * FROM seeker_info;";
@@ -41,7 +51,11 @@ let display_query_provider = "SELECT * FROM provider_info;";
 
 app.get("/crud_initial",(req,res)=>{
     console.log(admin_authenticated);
-    res.sendFile(__dirname + "/crud-initial.html");
+    // res.sendFile(__dirname + "/crud-initial.html");
+    if(admin_authenticated===true)
+    res.render("crud-initial-two",{auth_color:"#00ED64"});
+    else
+    res.render("crud-initial-two",{auth_color:"red"});
 });
 
 app.post("/login-authenticate",(req,res)=>{
@@ -51,8 +65,10 @@ app.post("/login-authenticate",(req,res)=>{
     let username = req.body.uname;
     let password = req.body.pword;
 
-    if(log==="logout")
-    admin_authenticated=false;
+    if(log==="logout"){
+        admin_authenticated=false;
+        res.redirect("/crud_initial");       
+    }
     else{
         let auth_query = "SELECT id from admin where username=? and password=?";
         mysql_connection.query(auth_query,[username,password],(err,rows,result)=>{
@@ -62,8 +78,9 @@ app.post("/login-authenticate",(req,res)=>{
                 if(rows[0] === undefined){
                     admin_authenticated=false;
                     console.log(admin_authenticated);
-                    // res.redirect("/crud_initial");
-                    res.sendFile(__dirname + "/login-faliure.html");
+                    // alert("finaaly")
+                    // res.sendFile(__dirname + "/login-faliure.html");
+                    res.redirect("/crud_initial");
                 }
                 else{
                     admin_authenticated=true;
@@ -71,7 +88,7 @@ app.post("/login-authenticate",(req,res)=>{
                     res.redirect("/crud_initial");
                 }
             }
-        })
+        });
     }
 
 });

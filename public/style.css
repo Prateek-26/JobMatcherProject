@@ -54,6 +54,7 @@ nav{
     letter-spacing: .6rem;
     font-size: 3rem;
     padding: 0;
+    font-family: Reem Kufi Fun;
 }
 
 .navbar-nav a:hover{
@@ -109,12 +110,14 @@ nav{
     padding: 2rem;
     padding-top: 2.5rem;
     border-radius: 35px; 
+    font-family: PT SERIF;
 }
 
 .fa-hashtag{
     /* background: #000; */
     /* border: 1px solid black; */
     font-size: 6rem;
+    font-weight: 900;
 }
 
 .hashtag-container{
@@ -128,10 +131,12 @@ nav{
     justify-content: center;
 
     font-size: 4rem;
+    /* font-family: Hammersmith One; */
     text-align: center;
     padding: 0.5rem 1rem 1rem 0.5rem;
     background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
     background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
+
     /* Created with https://www.css-gradient.com */
 background: #49E199;
 background: -webkit-linear-gradient(top right, #49E199, #FE9EE1);
@@ -172,6 +177,13 @@ background: linear-gradient(to bottom left, #49E199, #FE9EE1);
     /* border: 1px solid black;/ */
     margin: .5rem 0;
     /* display: block; */
+}
+.single-feature h3{
+    /* color: orange; */
+    font-size: 1.2rem;
+}
+.single-feature i{
+    font-size: 1.2rem;
 }
 
 .feature-header{
@@ -298,6 +310,7 @@ green #5FD068
 }
 /* form */
 
+
 .login-form{
     /* background: blue; */
     min-height: 35%;
@@ -306,8 +319,9 @@ green #5FD068
     position: absolute;
     bottom: 10%;
 }
+
 .input-group 
-.login-uname{
+.login-unam:focus{
     width: 11.5vw;
 }
 #exampleInputPassword1{
@@ -397,8 +411,12 @@ green #5FD068
 .crud-init-footer-header{
     position: absolute;
     bottom: 0;
-    left: 48.4%;
+    /* left: 48.4%; */
+    text-align: center;
+    left: 0;
     font-size: 0.6rem;
+    /* background: #000; */
+    width: 100vw;
 }
 
 /* Crud initial completed */
@@ -477,13 +495,51 @@ green #5FD068
 
 .request-go-back{
     position: absolute;
-    /* color: black; */
     top: 2%;
     left: 5%;
 }
 
 /* seeker crud ops*/
 
+.insert-form input, .update-form input, .delete-form input{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.insert-form, .update-form{
+    padding: 3rem;
+    border-radius: 20px;
+    background: rgb(255, 235, 235);
+    background: #EAFFD5;
+    background: linear-gradient(180deg, #e3ffe7 0%, #d9e7ff 100%);
+    ;
+    /* border: 4px solid lawngreen; */
+    /* border: 4px solid #00ED64; */
+}
+
+.insert-form{
+    margin-left: 15rem;
+}
+.update-form{
+    margin-right: 15rem;
+}
+
+.delete-form{
+    /* border: 4px solid lawngreen; */
+    /* border: 4px solid #00ED64; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seeker-btn{
+    width: 8vw;
+}
+.crud-mid-col{
+    /* background: #000; */
+}
 
 /* provider crud ops*/
 .crud-main
@@ -491,16 +547,17 @@ input[type=text],
 input[type=number],
 input[type=email],
 input[type=tel]{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding: 0.5rem;
     margin: 2rem;
+    /* background: #000; */
 }
 
 #inst{
     margin-left: 2rem;
 }
 #del{
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 #updt{
     margin-left: 2rem;
@@ -528,3 +585,86 @@ input[type=tel]{
     min-height: 85%;
     max-width: 75%;  
 }
+
+/* About */
+ .about-body{
+    /* background: black; */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .about-main{
+    height: 80%;
+    width: 90%;
+    padding: 2rem 3rem;
+    background: linear-gradient(yellow,#00ED64);
+    background: linear-gradient(-25deg,#f8ff00 0%, aqua 100%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 55px;
+    position: relative;
+ }
+
+ .about-brand:hover{
+    transform: scale(0);
+ }
+ .about-brand{
+    position: absolute;
+    right: 5%;
+    font-size: 4.5rem;
+    text-shadow: 1px 1px white;
+    cursor: pointer;
+ }
+
+ .about-header{
+    margin-bottom: 2rem;
+    font-size: 5rem;
+    color: white;
+    text-shadow: 1px 1px black;
+    letter-spacing: 6px;
+ }
+ .dev-header{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0.5px 0.5px black;
+    color: white;
+    letter-spacing: 2px;
+ }
+ .dev-header span{
+    font-size: 2rem;
+    color: black;
+ }
+
+ .about-content-container{
+    margin-top: 3rem;
+    /* background: #000; */
+    letter-spacing: 2px;
+ }
+ .para-header{
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+ }
+ .para-header strong{
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bolder;
+ }
+ .about-para{
+    font-size: 1.1rem;   
+ }
+ .about-btn:hover{
+    color: black;
+    background: none;
+    color: white;
+    text-shadow: 0.5px 0.5px black;
+ }
+ .about-btn{
+    /* color: white; */
+    color: black;
+    background: none;
+    /* border: 2px solid white; */
+    font-size: 1.1rem;
+ }

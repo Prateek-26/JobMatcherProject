@@ -8,55 +8,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="seeker-body">
             <!-- <h1>seeker</h1> -->
             <div class="crud-main">
                 <div class="crud-first-row row">
                     <div class="crud-left-col col col-4 crud-col">
                             <form action="/crud_initial" method="get">
-                                <button type="submit" class="btn btn-primary request-go-back">Go Back</button>
+                                <button type="submit" class="btn btn-outline-dark request-go-back">Go Back</button>
                             </form>
-                        <form action="seeker/crud/insert" method="post">
 
-                          
+                        <form action="seeker/crud/insert" class="insert-form" method="post">
+
                             <input class="form-inputs" type="number" name="sid" id="" placeholder="ID" >
                             <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
                             <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
                             <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
                             <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
                             <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
-                            <button id="inst"type="submit" class="btn btn-primary">Insert</button>
+                            <button id="inst"type="submit" class="btn btn-success seeker-btn">Insert</button>
                         </form>
                     </div>
+
                     <div class="crud-mid-col col col-4 crud-col">
-                        <h1 class="crud-delete-header">Seeker</h1>
-                        <form action="seeker/crud/delete" method="post">
+                        <!-- <h1 class="crud-delete-header">Seeker</h1> -->
+                        <form action="seeker/crud/delete" method="post" class="delete-form">
                             <input type="number" name="sid" id="" placeholder="Enter ID to Delete">
-                            <button id="del" type="submit" class="btn btn-primary">Delete</button>
+                            <button id="del" type="submit" class="btn btn-danger seeker-btn">Delete</button>
                         </form>
                     </div>
+
                     <div class="crud-right-col col col-4 crud-col">
-                        <form action="seeker/crud/update" method="post">
+                        <form action="seeker/crud/update" method="post" class="update-form">
                             <input class="form-inputs" type="number" name="sid" id="" placeholder="Enter ID to Update">
                             <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
                             <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
                             <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
                             <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
                             <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
-                            <button id="updt" type="submit" class="btn btn-primary">Update</button>
+                            <button id="updt" type="submit" class="btn btn-primary seeker-btn">Update</button>
                         </form>
                     </div>
+
                 </div>
 
                 <div class="crud-second-row row">
                     <div class="crud-second-col col col-12 crud-col">
-        
-                        <!-- <% records.forEach((element)=>{ %>
-                            <span><%= element.job_no %></span>
-                            <span><%= element.job_designation %></span>
-                            <span><%= element.skill_req %></span>
-                            <span><%= element.cgpa_req%></span>
-                            <%  }) %> -->
         
                             <div class="final-table-main-container">
                                 <table class="table table-success table-striped final-table" style="min-height: 50%; max-width: 80%;">
