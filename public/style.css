@@ -17,6 +17,9 @@
     right: -4%;
     bottom: -26%;
     transform: rotate(-35deg);
+    /* background: linear-gradient(180deg, #3ad59f 0%,#f8ff00 100%); */
+    /* background: white; */
+    /* border: 3px solid white; */
 }
 
 .home-section{
@@ -29,16 +32,42 @@
 }
 
 /* Navbar */
-
-.navbar-brand{
-    /* color: aqua; */
-    /* border: 1px solid black; */
-    margin-left: 1rem;
-    letter-spacing: .4rem;
+.navbar{
+    background: #000;
+    padding: 0;
+}
+nav{
+    font-size: 1.3rem;
+    background: white;
+    padding: 0;
 }
 
+.navbar-brand:hover{
+    transform: scale(1.2);
+    color: #00ED64;
+}
+
+.navbar-brand{
+    color: #00ED64;
+    /* border: 1px solid white; */
+    margin-left: 1.6rem;
+    letter-spacing: .6rem;
+    font-size: 3rem;
+    padding: 0;
+}
+
+.navbar-nav a:hover{
+    border-bottom: 4px solid #00ED64;
+    /* transform: scale(1.1); */
+}
 .navbar-nav{
+    /* color: #00ED64; */
+    /* background: white; */
+    /* margin: 0 0.2rem; */
     margin-right: 0.8rem;
+}
+.navbar-nav a{
+    margin-left: 0.2rem;
 }
 
 /* Main Home Content */
@@ -75,6 +104,8 @@
 }
 .header_container{
     /* border: 1px solid black; */
+    background: linear-gradient(180deg, #3ad59f 0%,#f8ff00 100%);
+    /* background: linear-gradient(180deg, #00C9FF 0%, #92FE9D 100%); */
     padding: 2rem;
     padding-top: 2.5rem;
     border-radius: 35px; 
@@ -87,6 +118,7 @@
 }
 
 .hashtag-container{
+    background: #000;
     margin-left: 2rem;
     height: 6rem;
     width: 6rem;
@@ -97,8 +129,16 @@
 
     font-size: 4rem;
     text-align: center;
-    padding-right: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 1rem 1rem 0.5rem;
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
+    /* Created with https://www.css-gradient.com */
+background: #49E199;
+background: -webkit-linear-gradient(top right, #49E199, #FE9EE1);
+background: -moz-linear-gradient(top right, #49E199, #FE9EE1);
+background: linear-gradient(to bottom left, #49E199, #FE9EE1);
+    /* padding-right: 0.5rem;
+    padding-bottom: 0.5rem; */
     /* background: orangered; */
     /* border: 1px solid black; */
 }
@@ -111,9 +151,10 @@
 /* right */
 
 #home-right{
-    /* border: 1px solid black; */
+    /* border: 1px solid white; */
     /* background: yellow; */
-    padding: 2rem 1rem;
+    /* padding: 2rem 1rem; */
+    color: white;
 }
 
 .home-features{
@@ -125,6 +166,7 @@
     /* text-align:center; */
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .single-feature{
     /* border: 1px solid black;/ */
@@ -142,16 +184,26 @@
     letter-spacing: 0.2rem;
     font-size: 1.2rem;
 }
-
-
-
 /* Home btn */
 
+.home-btn:hover{
+    border-radius: 10rem;
+    transition: none;
+    background: rgb(0, 237, 100);
+    color: black;
+}
 .home-btn{
     position: absolute;
     width: 10vw;
-    bottom: 10%;
-    margin: 0 45vw;
+    left: 40%;
+    bottom: 2%;
+    background: rgb(0, 237, 100);
+    color: black;
+    font-size: 1.2rem;
+    /* text-shadow: 1px 1px 1px black; */
+    /* margin-top: 15rem; */
+    /* bottom: 10%; */
+    /* margin: 0 45vw; */
 }
 
 /* Footer */
@@ -383,3 +435,56 @@ green #5FD068
     margin: 4rem 1rem;
 }
 
+.request-go-back{
+    position: absolute;
+    /* color: black; */
+    top: 2%;
+    left: 5%;
+}
+
+/* seeker crud ops*/
+
+
+/* provider crud ops*/
+.crud-main
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel]{
+    border: 2px solid black;
+    padding: 0.5rem;
+    margin: 2rem;
+}
+
+#inst{
+    margin-left: 2rem;
+}
+#del{
+    margin-left: 2rem;
+}
+#updt{
+    margin-left: 2rem;
+}
+#flt{
+    margin-top: 10rem ;
+}
+
+.filter-btn{
+    width: 10vw;
+}
+
+/* final table */
+
+.final-table-main-container{
+    /* width: ; */
+    /* background: #000; */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.final-table{
+    min-height: 85%;
+    max-width: 75%;  
+}

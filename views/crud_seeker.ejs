@@ -9,85 +9,73 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>seeker</h1>
-    <div class="crud-main">
-        <div class="crud-first-row row">
-            <div class="crud-left-col col col-4 crud-col">
-                <form action="seeker/crud/insert" method="post">
-                    <input class="form-inputs" type="number" name="sid" id="" placeholder="ID" >
-                    <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
-                    <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
-                    <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
-                    <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
-                    <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" value="0">
-                    <button type="submit">Insert</button>
-                </form>
-            </div>
-            <div class="crud-mid-col col col-4 crud-col">
-                <h1 class="crud-delete-header">Seeker</h1>
-                <form action="seeker/crud/delete" method="post">
-                    <input type="number" name="sid" id="" placeholder="Enter ID to Delete">
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
-            <div class="crud-right-col col col-4 crud-col">
-                <form action="seeker/crud/update" method="post">
-                    <input class="form-inputs" type="number" name="sid" id="" placeholder="Enter ID to Update">
-                    <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
-                    <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
-                    <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
-                    <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
-                    <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" value="0">
-                    <button type="submit">Update</button>
-                </form>
-            </div>
-        </div>
-        <div class="crud-second-row row">
-            <div class="crud-second-col col col-12 crud-col">
-                <% records.forEach((element)=>{ %>
-                    <span><%= element.s_id %></span>
-                    <span><%= element.s_name %></span>
-                    <span><%= element.s_email %></span>
-                    <span><%= element.s_contact %></span>
-                    <span><%= element.s_branch %></span>
-                    <span><%= element.s_cgpa %></span>
-                    <%  }) %>
-            </div>
+            <!-- <h1>seeker</h1> -->
+            <div class="crud-main">
+                <div class="crud-first-row row">
+                    <div class="crud-left-col col col-4 crud-col">
+                            <form action="/crud_initial" method="get">
+                                <button type="submit" class="btn btn-primary request-go-back">Go Back</button>
+                            </form>
+                        <form action="seeker/crud/insert" method="post">
+
+                          
+                            <input class="form-inputs" type="number" name="sid" id="" placeholder="ID" >
+                            <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
+                            <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
+                            <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
+                            <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
+                            <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
+                            <button id="inst"type="submit" class="btn btn-primary">Insert</button>
+                        </form>
+                    </div>
+                    <div class="crud-mid-col col col-4 crud-col">
+                        <h1 class="crud-delete-header">Seeker</h1>
+                        <form action="seeker/crud/delete" method="post">
+                            <input type="number" name="sid" id="" placeholder="Enter ID to Delete">
+                            <button id="del" type="submit" class="btn btn-primary">Delete</button>
+                        </form>
+                    </div>
+                    <div class="crud-right-col col col-4 crud-col">
+                        <form action="seeker/crud/update" method="post">
+                            <input class="form-inputs" type="number" name="sid" id="" placeholder="Enter ID to Update">
+                            <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
+                            <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
+                            <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
+                            <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
+                            <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
+                            <button id="updt" type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="crud-second-row row">
+                    <div class="crud-second-col col col-12 crud-col">
+        
+                        <!-- <% records.forEach((element)=>{ %>
+                            <span><%= element.job_no %></span>
+                            <span><%= element.job_designation %></span>
+                            <span><%= element.skill_req %></span>
+                            <span><%= element.cgpa_req%></span>
+                            <%  }) %> -->
+        
+                            <div class="final-table-main-container">
+                                <table class="table table-success table-striped final-table" style="min-height: 50%; max-width: 80%;">
+                                    <th>ID</th><th>NAME</th><th>EMAIL</th><th>CONTACT</th><th>BRANCH</th><th>CGPA</th>
+                                    <% records.forEach((element)=>{ %>
+                                        <tr>
+                                            <td class="table-dark"><%= element.s_id %></td>
+                                            <td class="table-dark"><%= element.s_name %></td>
+                                            <td class="table-dark"><%= element.s_email %></td>
+                                            <td class="table-dark"><%= element.s_contact %></td>
+                                            <td class="table-dark"><%= element.s_branch %></td>
+                                            <td class="table-dark"><%= element.s_cgpa%></td>
+                                            </tr>
+                                    <%  }) %>
+                                </table>
+                            </div>
+        
+                    </div>
+                </div>
     </div>
 </body>
 </html>
-
-
-    <!-- <form action="/seeker_ops" method="post">
-        <div class="seeker-main">
-            <div class="seeker-left">
-                <div class="crud-ops" id="seeker-insert">
-                    <input type="number" name="" id="" placeholder="ID">
-                    <input type="text" name="" id="" placeholder="Name">
-                    <input type="email" name="" id="" placeholder="Email">
-                    <input type="tel" name="" id="" placeholder="Contact No">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Address"></textarea>
-                    <input type="text" name="" id="" placeholder="Branch">
-                    <input type="number" name="" id="" placeholder="CGPA">
-                    <button type="submit">insert</button>
-                </div>
-                <div class="crud-ops" id="seeker-update">
-                    <input type="number" name="" id="" placeholder="ID">Enter ID 
-                    <input type="text" name="" id="" placeholder="Name">
-                    <input type="email" name="" id="" placeholder="Email">
-                    <input type="tel" name="" id="" placeholder="Contact No">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Address"></textarea>
-                    <input type="text" name="" id="" placeholder="Branch">
-                    <input type="number" name="" id="" placeholder="CGPA">
-                    <button type="submit">update</button>
-                </div>
-                <div class="crud-ops" id="seeker-delete">
-                    <input type="number" name="" id="" placeholder="ID">Enter ID 
-                    <button type="submit">delete</button>
-                </div>
-            </div>   
-            <div class="seeker-right">
-
-            </div>
-        </div>
-    </form> -->

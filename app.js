@@ -7,6 +7,7 @@ const SqlString = require('mysql/lib/protocol/SqlString');
 const _ = require('lodash');
 const { result, get } = require('lodash');
 const e = require('express');
+const { query } = require('express');
 const app = express();
 const mysql_connection = mysql.createConnection({
     host: 'localhost',
@@ -19,24 +20,6 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
-
-// function display(request) {
-//     console.log(request);
-//     if(request === "crud_seeker"){
-//         console.log("Heeloo seeker");
-//         let display_query = "SELECT * FROM seeker_info;";
-//         mysql_connection.query(display_query,(err,result)=>{
-//             if(err) throw err;
-//             // console.log("jhkfjdhfjad");
-//             console.log(result);
-//             return result;
-//         })
-//     }
-//     else{
-//         console.log("Heello provider");
-//     }
-// }
-
 app.get("/", (req,res)=>{
     res.sendFile(__dirname + "/index.html");
 });
@@ -47,126 +30,6 @@ app.get("/details", (req,res)=>{
     res.render("data_manip",{});
 });
 
-// app.post("/",(req,res)=>{
-//     let id = req.body.e_id;
-//     let name = req.body.e_name;
-//     const sql = "INSERT INTO employee (emp_no,name) VALUES (?,?);";
-//     mysql_connection.query(sql,[id,name],(err,result)=>{
-//         if(err) throw err;
-//         console.log("Inserted");
-//     });
-// });
-
-/*
-
-app.post("/:job_data_provider", (req,res)=>{
-    const operation = req.body.operation;
-    const person = _.lowerCase(req.params.job_data_provider);
-
-    console.log(operation + "  " + person);
-
-    // if(person === "seeker"){
-        if(operation === "select"){
-            let query;
-            if(person === "seeker")
-            query = "SELECT * FROM employee"; // add seeker
-            else
-            query = "SELECT * FROM salary"; // add provider
-            mysql_connection.query(query,(err,result)=>{
-                if(err) throw err;
-                console.log(result);
-                res.render("_select",{data : result, pp: person});
-            });
-        }
-        else if(operation === "insert"){
-            res.render(person+"_insert",{});
-        }
-        else if(operation === "delete"){
-            res.render("_delete",{pp:person});
-        }
-        else if(operation === "update"){
-            res.render(person+"_update",{});
-        }
-        else{
-            res.send("Galat Maal he tumhara");
-        }
-    // }
-});
-
-
-app.post("/:person/operations/:operation_from_form",(req,res)=>{
-
-    let operation = _.lowerCase(req.params.operation_from_form);
-    const person = _.lowerCase(req.params.person);
-
-    if(operation === "select"){
-        mysql_connection.query("SELECT * FROM employee",(err,result)=>{
-            if(err) throw err;
-            console.log(result);
-            res.render(person+"_select",{
-                data : result
-            });
-        });
-    }
-    if(person==="seeker"){
-        // let display_query = "SELECT * FROM seeker_info"
-        if(operation === "insert"){
-            console.log(req.body);
-            let query = "INSERT INTO salary (emp_no, name) VALUES (?,?);";
-            mysql_connection.query(query,[req.body.e_id, req.body.e_name], (err,result)=>{
-                if(err) throw err;
-                console.log("Inserted Successfully");
-            });
-        } 
-        else if(operation === "delete"){
-            console.log(req.body);
-            let query = "DELETE FROM employee WHERE emp_no = ?;";
-            mysql_connection.query(query,[req.body.id],(err,result)=>{
-                if(err) throw err;
-                console.log("Record Deleted");
-            });
-        }
-        else if(operation === "update"){
-            console.log(req.body);
-            let query = "UPDATE employee SET name = ? WHERE emp_no = ?;";
-            mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
-                if(err) throw err;
-                console.log("Record Updated");           
-            });
-        }
-    }
-    else if(person==="provider"){
-        if(operation === "insert"){
-            console.log(req.body);
-            let query = "INSERT INTO employee (emp_no, name) VALUES (?,?);";
-            mysql_connection.query(query,[req.body.e_id, req.body.e_name], (err,result)=>{
-                if(err) throw err;
-                console.log("Inserted Successfully");
-            });
-        } 
-        else if(operation === "delete"){
-            console.log(req.body);
-            let query = "DELETE FROM employee WHERE emp_no = ?;";
-            mysql_connection.query(query,[req.body.id],(err,result)=>{
-                if(err) throw err;
-                console.log("Record Deleted");
-            });
-        }
-        else if(operation === "update"){
-            console.log(req.body);
-            let query = "UPDATE employee SET name = ? WHERE emp_no = ?;";
-            mysql_connection.query(query,[req.body.name, req.body.id],(err,result)=>{
-                if(err) throw err;
-                console.log("Record Updated");           
-            });
-        }
-    }
-
-});
-
-
-*/
-
 // new way
 // Assume 'request' to be a person(either seeker o provide) who is trying to request
 
@@ -174,6 +37,7 @@ let admin_authenticated = false;
 
 let display_query_seeker = "SELECT * FROM seeker_info;";
 let display_query_provider = "SELECT * FROM provider_info;";
+
 
 app.get("/crud_initial",(req,res)=>{
     console.log(admin_authenticated);
@@ -214,6 +78,10 @@ app.post("/login-authenticate",(req,res)=>{
 
 app.get("/:crud_request",(req,res)=>{
     let request = req.params.crud_request;
+
+    // ChHANGE THIS 
+    // admin_authenticated=true;
+
     if(admin_authenticated===true){
         if(request === "crud_seeker"){
             mysql_connection.query(display_query_seeker,(err,result)=>{
@@ -233,6 +101,22 @@ app.get("/:crud_request",(req,res)=>{
     }
 
 });
+
+app.post("/finallist",(req,res)=>{
+    // res.sendFile(__dirname + "/login-require.html");
+    // console.log("Hello");
+    // res.send("Aa gaya");
+    result_query = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch;";
+    mysql_connection.query(result_query,(err,result)=>{
+        if(err) throw err;
+        else{
+            // console.log(result);
+            res.render("final-page",{
+                records: result
+            })
+        }
+    })
+})
 
 app.post("/:request/crud/:operation",(req,res)=>{
     

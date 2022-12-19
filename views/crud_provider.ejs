@@ -10,10 +10,12 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>provider</h1>
+
+    
+    <!-- <h1>provider</h1> -->
     <!-- bootstrap form -->
 
-    <div class="crud-main">
+    <!-- <div class="crud-main"> 
         <div class="crud-first-row row">
             <div class="crud-left-col col col-4 crud-col">
                 <form action="provider/crud/insert" method="post">
@@ -30,6 +32,9 @@
                     <input type="number" name="jid" id="" placeholder="Enter Job ID to Delete">
                     <button type="submit">Delete</button>
                 </form>
+                <form action="/finallist" method="post">
+                    <button type="submit" class="btn btn-warning">Filter</button>
+                </form>
             </div>
             <div class="crud-right-col col col-4 crud-col">
                 <form action="provider/crud/update" method="post">
@@ -40,17 +45,73 @@
                     <button type="submit">Update</button>
                 </form>
             </div>
+        </div>  -->
+    
+        <!-- <h1>provider</h1> -->
+    <!-- bootstrap form -->
+
+    <div class="crud-main">
+        <div class="crud-first-row row">
+            <div class="crud-left-col col col-4 crud-col">
+                <form action="/crud_initial" method="get">
+                    <button type="submit" class="btn btn-primary request-go-back">Go Back</button>
+                </form>
+                <form action="provider/crud/insert" method="post">
+                    <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
+                    <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
+                    <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
+                    <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
+                    <button id="inst" class="btn btn-primary" type="submit">Insert</button>
+                </form>
+            </div>
+            <div class="crud-mid-col col col-4 crud-col">
+                <h1 class="crud-delete-header">provider</h1>
+                <form action="provider/crud/delete" method="post">
+                    <input type="number" name="jid" id="" placeholder="Enter Job ID to Delete">
+                    <button id="del" class="btn btn-primary"  type="submit">Delete</button>
+                </form>
+                <form action="/finallist" method="post">
+                    <button type="submit" id="flt" class="btn btn-warning filter-btn">Filter</button>
+                </form>
+            </div>
+            <div class="crud-right-col col col-4 crud-col">
+                <form action="provider/crud/update" method="post">
+                    <input class="form-inputs" type="number" name="jid" id="" placeholder="Job ID" >
+                    <input class="form-inputs" type="text" name="jname" id="" placeholder="Job Designation" >
+                    <input class="form-inputs" type="text" name="jskill" id="" placeholder="Skill Required">
+                    <input class="form-inputs" type="number" name="jcgpa" id="" placeholder="CGPA Required" step="0.1" min="0" max="10" value="0">
+                    <button id="updt"  class="btn btn-primary" type="submit">Update</button>
+                </form>
+            </div>
         </div>
+
         <div class="crud-second-row row">
             <div class="crud-second-col col col-12 crud-col">
-                <% records.forEach((element)=>{ %>
+
+                <!-- <% records.forEach((element)=>{ %>
                     <span><%= element.job_no %></span>
                     <span><%= element.job_designation %></span>
                     <span><%= element.skill_req %></span>
                     <span><%= element.cgpa_req%></span>
-                    <%  }) %>
+                    <%  }) %> -->
+
+                    <div class="final-table-main-container">
+                        <table class="table table-success table-striped final-table" style="min-height: 50%; max-width: 55%;">
+                            <th>JOB ID</th><th>JOB DESIGNATION</th><th>SKILL REQUIRED</th><th>CGPA REQUIRED</th>
+                            <% records.forEach((element)=>{ %>
+                                <tr>
+                            <td class="table-dark"><%= element.job_no %></td>
+                            <td class="table-dark"><%= element.job_designation %></td>
+                            <td class="table-dark"><%= element.skill_req %></td>
+                            <td class="table-dark"><%= element.cgpa_req %></td>
+                            </tr>
+                            <%  }) %>
+                        </table>
+                    </div>
+
             </div>
         </div>
+
     </div>
 </body>
 </html>

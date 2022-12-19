@@ -14,7 +14,7 @@
     
 </head>
 <body class="home-body">
-    <section class="home-section">
+    <section class="home-section" style="background: #000;">
     <nav class="navbar navbar-expand-sm">
 
               <a class="navbar-brand" href="/about">JM</a>
@@ -24,8 +24,8 @@
 
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                  <a class="nav-link" aria-current="page" href="/"    style="border-bottom: 3px solid orangered;">Home</a>
-                  <a class="nav-link" href="/about">About</a>
+                  <a class="nav-link" aria-current="page" href="/" style="color:white; border-bottom: 4px solid #00ED64;">Home</a>
+                  <a class="nav-link" href="#" style="color: white;">About</a>
                 </div>
               </div>
           </nav>
@@ -55,39 +55,43 @@
 
                   <div class="home-features">
                     <div class="single-feature">
-                      <i class="fa-solid fa-plus icons" ></i>
+                      <i class="fa-solid fa-plus icons" style="color: lawngreen;"></i>
                       <h3 class="feature-header">Happy 3 customers</h3>
                     </div>
 
                     <div class="single-feature">
-                      <i class="fa-solid fa-star icon"></i>
+                      <i class="fa-solid fa-star icon" style="color: yellow;"></i>
                       <h3 class="feature-header">3+ five star ratings</h3>
                     </div>
 
 
                       <div class="single-feature">
-                        <i class="fa-sharp fa-solid fa-map-location-dot"></i>
+                        <i class="fa-sharp fa-solid fa-map-location-dot" style="color: orange;"></i>
                         <h3 class="feature-header">Based in India</h3>
                       </div>
  
 
-                      <div class="single-feature">
-                        <i class="fa-solid fa-heart"></i>
+                      <div class="single-feature last-single-feature">
+                        <i class="fa-solid fa-heart" style="color: red;"></i>
                         <h3 class="feature-header">Choose the Best</h3>
                       </div>
+
+                      <form action="/crud_initial" method="get">
+                        <button type="submit" class="btn btn-primary home-btn">Get Started</button>
+                      </form>  
                   </div>
                </div>
                </div>
 
         </div>
-       
+<!--        
         <div>
           <form action="/crud_initial" method="get">
             <button type="submit" class="btn btn-primary home-btn">Get Started</button>
           </form>       
-         </div>
+         </div> -->
 
-         <div class="demo-box"></div>
+         <!-- <div class="demo-box"></div> -->
          <div class="footer">
           <h1>© 2 0 2 2</h1>
       </div>
