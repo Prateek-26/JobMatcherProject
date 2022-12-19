@@ -378,8 +378,9 @@ green #5FD068
     /* border: 1px solid black; */
     /* background: red; */
     background: #00ED64;
-    background: linear-gradient(lawngreen,#00ED64);
+    /* background: linear-gradient(lawngreen,#00ED64); */
     color: white;
+    background: #2cf852;
     text-shadow: 1px 1px green;
     border-radius: 25px;
     position: relative;
@@ -585,8 +586,8 @@ input[type=tel]{
     align-items: center;
 }
 .final-table{
-    min-height: 85%;
-    max-width: 75%;  
+    min-height: 55%;
+    max-width: 55%;  
 }
 
 /* About */

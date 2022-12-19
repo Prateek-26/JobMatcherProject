@@ -22,7 +22,7 @@
                             <input class="form-inputs" type="number" name="sid" id="" placeholder="ID" >
                             <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
                             <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
-                            <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
+                            <!-- <input class="form-inputs" type="number" name="sphone" id="" placeholder="Contact" > -->
                             <input class="form-inputs" type="text" name="skill" id="" placeholder="Skill">
                             <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
                             <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
@@ -43,7 +43,7 @@
                             <input class="form-inputs" type="number" name="sid" id="" placeholder="Enter ID to Update">
                             <input class="form-inputs" type="text" name="sname" id="" placeholder="Name" >
                             <input class="form-inputs" type="email" name="semail" id="" placeholder="Email" >
-                            <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" >
+                            <!-- <input class="form-inputs" type="tel" name="sphone" id="" placeholder="Contact" > -->
                             <input class="form-inputs" type="text" name="skill" id="" placeholder="Skill">
                             <input class="form-inputs" type="text" name="sbranch" id="" placeholder="Branch" >
                             <input class="form-inputs" type="number" name="scgpa" id="" placeholder="CGPA" step="0.1" min="0" max="10" >
@@ -57,14 +57,13 @@
                     <div class="crud-second-col col col-12 crud-col">
         
                             <div class="final-table-main-container">
-                                <table class="table table-success table-striped final-table" style="min-height: 50%; max-width: 80%;">
-                                    <th>ID</th><th>NAME</th><th>EMAIL</th><th>CONTACT</th><th>BRANCH</th><th>CGPA</th>
+                                <table class="table table-success table-striped final-table" style="min-height: 50%; max-width: 60%;">
+                                    <th>ID</th><th>NAME</th><th>EMAIL</th><th>BRANCH</th><th>CGPA</th>
                                     <% records.forEach((element)=>{ %>
                                         <tr>
                                             <td class="table-dark"><%= element.s_id %></td>
                                             <td class="table-dark"><%= element.s_name %></td>
                                             <td class="table-dark"><%= element.s_email %></td>
-                                            <td class="table-dark"><%= element.s_contact %></td>
                                             <td class="table-dark"><%= element.s_branch %></td>
                                             <td class="table-dark"><%= element.s_cgpa%></td>
                                             </tr>

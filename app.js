@@ -97,7 +97,7 @@ app.get("/:crud_request",(req,res)=>{
     let request = req.params.crud_request;
 
     // ChHANGE THIS 
-    admin_authenticated=true;
+    // admin_authenticated=true;
 
     if(admin_authenticated===true){
         if(request === "crud_seeker"){
@@ -167,13 +167,13 @@ app.post("/:request/crud/:operation",(req,res)=>{
     if(person==="seeker"){
         if(operation === "insert"){
             console.log(req.body);
-            let query = "INSERT INTO seeker_info (s_id,s_name,s_email,s_contact,s_branch,s_cgpa) VALUES (?,?,?,?,?,?);";
-           mysql_connection.query(query,[req.body.sid, req.body.sname, req.body.semail, req.body.sphone, req.body.sbranch, req.body.scgpa], (err,result)=>{
+            let query = "INSERT INTO seeker_info (s_id,s_name,s_email,s_branch,s_cgpa) VALUES (?,?,?,?,?);";
+           mysql_connection.query(query,[req.body.sid, req.body.sname, req.body.semail, req.body.sbranch, req.body.scgpa], (err,result)=>{
                 if(err) throw err;
                 console.log("Inserted Successfully");
                 let second_query = "INSERT INTO skill_info (s_id,s_skill) VALUES (?,?);";
                 mysql_connection.query(second_query,[req.body.sid,req.body.skill],(err,result)=>{
-
+                    if(err)throw err;
                 });
             }); 
             res.redirect("/crud_seeker");
@@ -189,8 +189,8 @@ app.post("/:request/crud/:operation",(req,res)=>{
         }
         else if(operation === "update"){
             console.log(req.body);
-            let query = "UPDATE seeker_info SET s_id = ?, s_name = ?, s_email = ?, s_contact = ?, s_branch = ?, s_cgpa = ? WHERE s_id = ?;";
-            mysql_connection.query(query,[req.body.sid, req.body.sname, req.body.semail, req.body.sphone, req.body.sbranch, req.body.scgpa, req.body.sid],(err,result)=>{
+            let query = "UPDATE seeker_info SET s_id = ?, s_name = ?, s_email = ?,  s_branch = ?, s_cgpa = ? WHERE s_id = ?;";
+            mysql_connection.query(query,[req.body.sid, req.body.sname, req.body.semail,req.body.sbranch, req.body.scgpa, req.body.sid],(err,result)=>{
                 if(err) throw err;
                 console.log("Record Updated");          
             });
