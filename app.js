@@ -8,8 +8,6 @@ const _ = require('lodash');
 const { result, get } = require('lodash');
 const e = require('express');
 const { query } = require('express');
-// const alert = require('alert');
-// import alert from 'alert'
 
 const app = express();
 const mysql_connection = mysql.createConnection({
@@ -24,19 +22,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 
-
-// old way
-
 app.get("/details", (req,res)=>{
     res.render("data_manip",{});
 });
 
-// new way
 // Assume 'request' to be a person(either seeker o provide) who is trying to request
 
 app.get("/", (req,res)=>{
-    res.sendFile(__dirname + "/index.html");
-    
+    res.sendFile(__dirname + "/index.html"); 
 });
 
 app.get("/about",(req,res)=>{
@@ -60,7 +53,6 @@ app.get("/crud_initial",(req,res)=>{
 
 app.post("/login-authenticate",(req,res)=>{
 
-    
     let log = req.body.log;
     let username = req.body.uname;
     let password = req.body.pword;
@@ -78,8 +70,6 @@ app.post("/login-authenticate",(req,res)=>{
                 if(rows[0] === undefined){
                     admin_authenticated=false;
                     console.log(admin_authenticated);
-                    // alert("finaaly")
-                    // res.sendFile(__dirname + "/login-faliure.html");
                     res.redirect("/crud_initial");
                 }
                 else{
@@ -120,14 +110,13 @@ app.get("/:crud_request",(req,res)=>{
 });
 
 app.post("/finallist",(req,res)=>{
-    // res.sendFile(__dirname + "/login-require.html");
-    // console.log("Hello");
-    // res.send("Aa gaya");
+
     let query_one = "DROP TABLE results;";
+
     let query_two = "CREATE TABLE results (SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch);";
+
     let query_three = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch";
 
-//    let result_query = "SELECT si.s_id, si.s_name, si.s_email, si.s_branch, pi.job_designation FROM (seeker_info as si natural join skill_info) inner join provider_info as pi on skill_info.s_skill = pi.skill_req where skill_info.s_skill = pi.skill_req and si.s_cgpa >= pi.cgpa_req order by s_id, s_branch;";
     mysql_connection.query(query_one,(err,result)=>{
         if(err) throw err;
         else{
@@ -145,16 +134,6 @@ app.post("/finallist",(req,res)=>{
             });
         }
     });
-            // mysql_connection.query(query_two,(err,result)=>{
-            //     console.log("Part two starts");
-            //     mysql_connection.query(query_three,(err,result)=>{
-            //         console.log("Part three starts");
-            //         console.log(result);
-            //         res.render("final-page",{
-            //             records: result
-            //         });
-            //     });
-            // });
 })
 
 app.post("/:request/crud/:operation",(req,res)=>{
